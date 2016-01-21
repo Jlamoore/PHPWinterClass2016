@@ -21,7 +21,7 @@
             $zipcode = filter_input(INPUT_POST, 'zipcode');
             $owner = filter_input(INPUT_POST, 'owner');
             $phone = filter_input(INPUT_POST, 'phone');
-            $stmt = $db->prepare("UPDATE corps set corp = :corp, incorp_dt =:incorp_dt, email = :email, zipcode =:zipcode, owner = :owner; phone = :phone WHERE id =:id");
+            $stmt = $db->prepare("UPDATE corps set corp = :corp, incorp_dt =:incorp_dt, email = :email, zipcode =:zipcode, owner = :owner, phone = :phone WHERE id =:id");
             
             $binds =array(
                 ":id" => $id,

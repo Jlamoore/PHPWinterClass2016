@@ -26,14 +26,14 @@
             foreach ($results as $row): ?>
             <tr>
                 <td><?php echo $row['corp']; ?></td>
-                <td><a href="read.php?id=<?php echo $row['id']; ?>">Read</a></td>
+                <td><a href="../manage/read.php?id=<?php echo $row['id']; ?>">Read</a></td>
                 <td><a href="../manage/update.php?id=<?php echo $row['id']; ?>">Update</a></td>
-                <td><a href="delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
+                <td><a href="../manage/delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
             </tr>
             <?php                   endforeach; ?>
             <tr>
                 <td>Add new corporation?</td>
-                <td><a href="create.php">Create</a></td>
+                <td><a href="../manage/create.php">Create</a></td>
             </tr>
         </table>
     </body>

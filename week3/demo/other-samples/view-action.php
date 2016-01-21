@@ -30,6 +30,7 @@
          * We execute the statement and make sure we
          * got some results back.
          */
+        
         $results = array();
         if ($stmt->execute() && $stmt->rowCount() > 0) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
