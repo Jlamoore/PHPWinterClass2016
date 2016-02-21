@@ -2,21 +2,21 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">    <!--include style sheet-->
         <title></title>
     </head>
     <body>
         <?php
        
-        include '../includes/dbconnect.php';
+        include '../includes/dbconnect.php';        //include database connection and functions
         include '../includes/functions.php';
 
         
         $db = getDatabase();
              $id = filter_input(INPUT_GET, 'id');
-             $stmt = $db->prepare("SELECT * FROM corps WHERE id =:id");
+             $stmt = $db->prepare("SELECT * FROM corps WHERE id =:id");     //connect to database and run the read sql quereywith the given id.
              $binds = array(
-                    ":id" => $id
+                    ":id" => $id            //set associative array
                 );
              $results = array();
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
@@ -26,7 +26,7 @@
         
                
       ?>
-        <table class="table table-striped">
+        <table class="table table-striped">             <!--styled html form-->
             <thead>
                 <tr>
                     <th>Corporation</th>
@@ -40,7 +40,7 @@
             <?php            
             ?>
             
-            <?php foreach ($results as $row): ?>
+            <?php foreach ($results as $row): ?>       <!--display for each field in the array-->
                 <tr>
                     <td><?php echo $row['corp']; ?></td>
                     <td><?php echo $row['incorp_dt']; ?></td>
