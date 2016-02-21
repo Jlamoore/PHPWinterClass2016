@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <title></title>
     </head>
     <body>
@@ -16,7 +17,7 @@
        if ($stmt->execute() && $stmt->rowCount() > 0)
        {$results = $stmt->fetchAll(PDO::FETCH_ASSOC);}
        ?>
-        <table>
+        <table class="table table-striped">
             <thead>
                 <tr> 
                     <th>Corporation</th>
@@ -26,7 +27,7 @@
             foreach ($results as $row): ?>
             <tr>
                 <td><?php echo $row['corp']; ?></td>
-                <td><a href="../manage/read.php?id=<?php echo $row['id']; ?>">Read</a></td>
+                <td><a href="../manage/read2.php?id=<?php echo $row['id']; ?>">Read</a></td>
                 <td><a href="../manage/update.php?id=<?php echo $row['id']; ?>">Update</a></td>
                 <td><a href="../manage/delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
             </tr>

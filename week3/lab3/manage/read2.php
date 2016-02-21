@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <title></title>
     </head>
     <body>
@@ -12,27 +13,20 @@
 
         
         $db = getDatabase();
-               
-       
-      $id = filter_input(INPUT_GET, 'id');
+             $id = filter_input(INPUT_GET, 'id');
              $stmt = $db->prepare("SELECT * FROM corps WHERE id =:id");
              $binds = array(
-                "id"=>$id,
-                ":corp" => $corp,
-                ":incorp_dt" => $incorp_dt,
-                ":email" => $email,
-                ":zipcode" => $zipcode,
-                ":owner" => $owner,
-                ":phone" => $phone);
-        
-        $results = array();
-        if ($stmt->execute($binds) && $stmt->rowCount() >0)
-             {
-                 $results =$stmt->fetch(PDO::FETCH_ASSOC);
+                    ":id" => $id
+                );
+             $results = array();
+        if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
-        ?>
-
-        <table>
+       
+        
+               
+      ?>
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Corporation</th>
@@ -63,4 +57,5 @@
 
     </body>
 </html>
+
 

@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <title></title>
         
     </head>
@@ -21,12 +22,11 @@
             $zipcode = filter_input(INPUT_POST, 'zipcode');
             $owner = filter_input(INPUT_POST, 'owner');
             $phone = filter_input(INPUT_POST, 'phone');
-            $stmt = $db->prepare("UPDATE corps set corp = :corp, incorp_dt =:incorp_dt, email = :email, zipcode =:zipcode, owner = :owner, phone = :phone WHERE id =:id");
+            $stmt = $db->prepare("UPDATE corps set corp = :corp, email = :email, zipcode =:zipcode, owner = :owner, phone = :phone WHERE id =:id");
             
             $binds =array(
                 ":id" => $id,
                 ":corp" => $corp,
-                ":incorp_dt" => $incorp_dt,
                 ":email" => $email,
                 ":zipcode" => $zipcode,
                 ":owner" => $owner,
@@ -51,7 +51,6 @@
                  die('Record not found');
                  }
                  $corp = $results['corp'];
-                 $incorp_dt = $results['incorp_dt'];
                  $email = $results['email'];
                  $zipcode = $results['zipcode'];
                  $owner = $results['owner'];
@@ -61,8 +60,6 @@
         <h1><?php echo $result; ?></h1>
         <form method="post" action="#">
             Corporation <input type="text" value="<?php echo $corp; ?>" name="corp" />
-            <br/>
-            Incorporation Date <input type="text" value="<?php echo $incorp_dt; ?>" name="incorp_dt" />
             <br/>
             Email <input type="text" value="<?php echo $email; ?>" name="email" />
             <br/>
