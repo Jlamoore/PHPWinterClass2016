@@ -2,28 +2,17 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">        <!-- css style sheet -->
         <title></title>
         
     </head>
     <body>
-        <?php
-        
-           include_once '../../functions/dbconnect.php';
-                      
-           $db = dbconnect();
-           $column = 'corps';
-           $order = 'ASC'; //DESC
-           $stmt = $db->prepare("SELECT * FROM corps ORDER BY $column $order");
-
-             $results = array();
-             if ($stmt->execute() && $stmt->rowCount() > 0) {
-                 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-             }
-          
-        ?>
+        <?php       
+        include '../functions/SortFunction.php';        //include the sort function 
+                $results = sortFunction();?>            <!--sets the $results array = to the returned value of the sort function-->
         
         
-        <table border="1">
+        <table class="table table-striped">      <!-- css style-->
             <thead>
                 <tr> 
                     <th>Corporation</th>
@@ -35,7 +24,7 @@
                 </tr>
             </thead>
             <tbody>
-            <?php foreach ($results as $row): ?>
+            <?php foreach ($results as $row): ?>          <!-- display the results of the sort in an easy to read table -->
             <tr>
                 <td><?php echo $row['corp']; ?></td>
                 <td><?php   $date = new DateTime($row['incorp_dt']);
@@ -47,7 +36,6 @@
             </tr>
             <?php                   endforeach; ?>
         </table>
-        
        
     </body>
 </html>
