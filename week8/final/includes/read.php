@@ -42,11 +42,12 @@
             <?php foreach ($results as $row): ?>       <!--display for each field in the array-->
                 <tr>
                     <td><?php echo $row['fullname']; ?></td>
-                    <td><?php echo $row['phone']; ?></td>
-                    <td><?php echo $row['address']; ?></td> 
-                    <td><?php echo $row['email']; ?></td> 
-                    <td><?php echo $row['website']; ?></td>
-                    <td><?php echo $row['birthday']; ?></td> 
+                    <td><a href="tel:<?php echo $row['phone']; ?>"><?php echo $row['phone']; ?></a></td>
+                    <td><a href="https://www.google.com/maps/place/<?php echo $row['address']; ?>"><?php echo $row['address']; ?></a></td> 
+                    <td><a href="mailto:<?php echo $row['email']; ?>"><?php echo $row['email']; ?></a></td> 
+                    <td><a href="<?php echo $row['website']; ?>"><?php echo $row['website']; ?></a></td>
+                    <td><?php   $date = new DateTime($row['birthday']);
+                            echo $date->format('m-d-Y'); ?></td> 
                     <td><a href="./update.php?id=<?php echo $row['address_id']; ?>">Update</a></td>            
                     <td><a href="./delete.php?id=<?php echo $row['address_id']; ?>">Delete</a></td>            
                 </tr>

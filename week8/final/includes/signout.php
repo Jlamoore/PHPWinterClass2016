@@ -7,13 +7,13 @@
     </head>
     <body>
         <?php
-        session_start();
+        session_start();                //start session , empt variables, and destroy the session to safely log out
         session_unset();
         session_destroy();
         echo 'Loggedout';
         ?>
         <form method = "GET" action = "../index.php">
-        <input type = "submit" name = "view" value = 'Return to loggin'>
+        <input type = "submit" name = "view" value = 'Return to loggin'>            <!-- return to login page-->
         </form>
 
         </body>

@@ -1,21 +1,21 @@
 <?php
 
 function createUser() {
-    $db = dbconnect();
-    $userId = filter_input(INPUT_POST, 'UserName');
+    $db = dbconnect();                                      //connect to db
+    $userId = filter_input(INPUT_POST, 'UserName');                                                 //set variables
     $email = filter_input(INPUT_POST, 'Email');
     $password = filter_input(INPUT_POST, 'password');
     $pass = sha1($password);
-    $stmt = $db->prepare("INSERT INTO users SET user_id = :userId, email = :email, password = :password, created = now()");
+    $stmt = $db->prepare("INSERT INTO users SET user_id = :userId, email = :email, password = :password, created = now()");     //prepare a query
     $binds = array(
                     ":userId" => $userId,
-                    ":email" => $email,
+                    ":email" => $email,                             //setup binds
                     ":password" => $pass
-                );//gather database urls like the one in the variable
-    if ($stmt->execute($binds) && $stmt->rowCount() > 0){                              //set values based on results
-        $result = 'successfully created.';
+                );
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0){                              //execute query
+        $result = 'successfully created.';                  //success
     } else {
-        $result = "Oops something went wrong, Please try again.";
+        $result = "Oops something went wrong, Please try again.";       //failure
     }
-    return $result;
+    return $result;     //return results
 }

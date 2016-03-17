@@ -7,8 +7,7 @@
     <body>
         <?php
         
-        $view = filter_input(INPUT_GET, 'view');      
-        //include './templates/links.html.php';
+        $view = filter_input(INPUT_GET, 'view');                    //This index page controls the required includes for all the "pages" the user interacts with
         if ( $view === 'Signup' ) {
             require_once './functions/dbData.php';  
             include './functions/until.php ';
@@ -52,7 +51,14 @@
         } else if (  $view === 'update' ) {
             require_once './functions/dbconnect.php';
             require_once './functions/dbData.php';
-            include './templates/view-all.html.php';    
+            include './templates/view-all.html.php';
+        } else if (  $view === 'Accept' ) {
+            require_once './functions/dbconnect.php';
+            require_once './functions/dbData.php';
+            include './functions/searchSortFunctions.php';
+            include './functions/FetchGroups.php';
+            include './functions/until.php';
+            include './templates/SearchSort.php';
         
         } else {
             /* Default view */            

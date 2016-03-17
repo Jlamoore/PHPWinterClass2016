@@ -15,7 +15,8 @@
                 foreach ($results as $row) {
                     ?>
                     <option value="<?php echo $row['address_group_id']; ?>"><?php echo $row['address_group']; ?></option>
-                <?php } ?>
+                <?php } ?>  <!--this html form sets up fields for the user to enter values. these values are then entered into the database.
+                                fields are repopulated if something is invalid.-->
             </select>
             <input type="text" name="fullName" value="<?php if (isPostRequest() && isset($_POST['fullName'])) echo $_POST['fullName']; ?>" placeholder="Enter a full name">*
             <input type="text" name="website" value="<?php if (isPostRequest() && isset($_POST['website'])) echo $_POST['website']; ?>" placeholder="enter a vaild website">*
@@ -27,7 +28,7 @@
         </form>
         <?php
         if (isPostRequest()) {
-            if (isset($_POST['fullName']) && isset($_POST['Email']) &&
+            if (isset($_POST['fullName']) && isset($_POST['Email']) &&                  //validate passsword, and email and if all fields were entered
                     isset($_POST['address']) && isset($_POST['phone']) &&
                     isset($_POST['website']) && isset($_POST['birthday'])) {
                 $result = isValidEmail();
@@ -42,7 +43,7 @@
             }
         }
         ?>
-        <form action="#" method ="GET">Would you like to view your addresses?
+        <form action="#" method ="GET">Would you like to view your addresses?           <!-- link to view all addresses-->
             <input  type="Submit" name="view" value="View-all">
             
         </form>

@@ -3,7 +3,7 @@
 function getAllTestData(){
     $db = dbconnect();
            
-    $stmt = $db->prepare("SELECT * FROM test");
+    $stmt = $db->prepare("SELECT * FROM test");                     //did not use
 
      $results = array();
      if ($stmt->execute() && $stmt->rowCount() > 0) {
@@ -18,7 +18,7 @@ function getAllTestData(){
 function searchTest($column, $search){
     $db = dbconnect();
            
-    $stmt = $db->prepare("SELECT * FROM test WHERE $column LIKE :search");
+    $stmt = $db->prepare("SELECT * FROM test WHERE $column LIKE :search");      //did not use
 
     $search = '%'.$search.'%';
     $binds = array(
@@ -33,7 +33,7 @@ function searchTest($column, $search){
 
 
 function processAdd() {
-     $action = filter_input(INPUT_POST, 'action');
+     $action = filter_input(INPUT_POST, 'action');          //did not use
             
     if ( $action === 'insert' ) {
         //saveData();

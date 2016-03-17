@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Welcome to my address book, please sign-in or sign-up to get started</h1>
+        <h1>Welcome to my address book, please sign-in or sign-up to get started</h1>           <!-- this is a default html template of a welcome page-->
         <form method="GET" action="#">
             <input type="submit" name="view" value="Login">
             <input type="submit" name="view" value="Signup">

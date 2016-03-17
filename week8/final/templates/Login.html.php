@@ -8,7 +8,7 @@
     <body>
         <form action="#" method="post">
             <label>Enter your Email Address</label>
-            <input type="text" name="Email" placeholder="Email" value="">
+            <input type="text" name="Email" placeholder="Email" value="">       <!--  form for the user to enter there login credentials-->
             <label>Enter your password</label>
             <input type="password" name="password" placeholder="Password">
             <input type="submit" name="subLogin" value="Login">
@@ -16,7 +16,7 @@
         <?php
         if (isPostRequest()) {
             $result = isValidEmail();
-            if ($result === TRUE) {
+            if ($result === TRUE) {         //validate the credentials
                 $result2 = doesExistInDB();
                 if ($result2 === TRUE) {
                     $results3 = isValidUser();
@@ -25,12 +25,12 @@
                         session_starter();
                         ?>
         <form action="./index.php" method="GET">
-            <input type="submit" name="view" value="View-all">
+            <input type="submit" name="view" value="View-all">              <!-- link to view all-->
         </form>
         <?php
                         
                     } else {
-                        echo 'incorrect email and password combination';
+                        echo 'incorrect email and password combination';                        //echo errors
                     }
                 } else {
                     echo "That email is not currently in our database.";
